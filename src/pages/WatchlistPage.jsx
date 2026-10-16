@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import WatchlistProductCard from '../components/watchlistProductCard'
+import WatchlistProductCard from '../components/WatchlistProductCard'
 
 const WatchlistPage = () => {
 
