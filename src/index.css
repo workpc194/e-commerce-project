@@ -27,6 +27,10 @@
     --font-metropolisMedium: 'metropolis-medium';
 }
 
+/* h2{
+    font-size: clamp(2rem, cal(7vw + 1rem), 5rem);
+} */
+
 ul li {
     list-style: none;
 }
@@ -72,11 +76,11 @@ ul li {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .cart{
+    .cart {
         flex-direction: column;
     }
 
-    .cart-summary{
+    .cart-summary {
         width: 80%;
     }
 }

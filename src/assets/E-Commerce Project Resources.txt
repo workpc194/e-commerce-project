@@ -1,0 +1,7 @@
+E-Commerce Project Resources
+
+Deployed URL: https://nexmall-e-commerce-project.vercel.app
+
+API That Used In this Project For Getting Data: https://dummyjson.com/docs/products
+
+Design Idea: https://sabitha-shophub.netlify.app
