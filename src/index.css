@@ -109,3 +109,207 @@ ul li {
         grid-template-columns: repeat(1, 1fr);
     }
 }
+
+/* Media Query With 930px */
+@media screen and (max-width: 930px) {
+    /* NavBar */
+    #navbar h1{
+        font-size: 20px;
+    }
+
+    #navbar li{
+        font-size: 16px;
+    }
+
+    /* Home Page */
+    #home h2{
+        font-size: 60px;
+    }
+
+    #home p{
+        font-size: 20px;
+    }
+
+    #home button{
+        font-size: 18px;
+    }
+
+    #home-category h4, #home-product h4{
+        font-size: 30px;
+    }
+
+    #home-category h6, #home-product h6{
+        font-size: 18px;
+    }
+
+    /* Footer */
+    #footer h1{
+        font-size: 24px;
+    }
+
+    #footer p{
+        font-size: 16px;
+    }
+
+    #footer h6{
+        font-size: 16px;
+    }
+}
+
+/* Media Query With 600px */
+@media screen and (max-width: 600px) {
+    /* NavBar */
+
+    #navbar li{
+        font-size: 15px;
+    }
+
+    /* Home Page */
+    #home h2{
+        font-size: 48px;
+    }
+
+    #home p{
+        font-size: 18px;
+    }
+
+    #home button{
+        font-size: 16px;
+    }
+
+    #home-category h4, #home-product h4{
+        font-size: 24px;
+    }
+
+    #home-category h6, #home-product h6{
+        font-size: 16px;
+    }
+
+    /* Footer */
+    #footer h1{
+        font-size: 20px;
+    }
+
+    #footer p{
+        font-size: 15px;
+    }
+
+    #footer h6{
+        font-size: 15px;
+    }
+}
+
+/* Media Query With 450px */
+@media screen and (max-width: 450px) {
+    /* NavBar */
+    #navbar{
+        padding-inline: 20px;
+    }
+
+    #navbar h1{
+        font-size: 18px;
+    }
+
+    #nav-icons li :nth-child{
+        font-size: 10px;
+    }
+
+    /* Home Page */
+    #home{
+        width: 75%;
+        top: 40%;
+    }
+
+    #home h2{
+        font-size: 36px;
+    }
+
+    #home p{
+        font-size: 16px;
+    }
+
+    #home button{
+        font-size: 15px;
+        padding: 6px 10px;
+    }
+
+    #home-category h4, #home-product h4{
+        font-size: 20px;
+    }
+
+    #home-category h6, #home-product h6{
+        font-size: 15px;
+    }
+
+    /* Product Card */
+    #product-card h5{
+        font-size: 14px;
+    }
+
+    #product-card h3{
+        font-size: 15px;
+    }
+
+    #product-card button{
+        font-size: 14px;
+    }
+
+    /* Category Card */
+    #category-card h5{
+        font-size: 15px;
+    }
+
+    /* Footer */
+    #footer h1{
+        font-size: 18px;
+    }
+
+    #footer p{
+        font-size: 14px;
+    }
+
+    #footer h6{
+        font-size: 14px;
+    }
+}
+
+/* Media Query With 370px */
+@media screen and (max-width: 370px) {
+    /* Home Page */
+    #home{
+        top: 30%;
+    }
+    
+    #home h2{
+        font-size: 30px;
+    }
+
+    #home p{
+        font-size: 15px;
+    }
+
+    #home button{
+        font-size: 14px;
+    }
+
+    #home-category h4, #home-product h4{
+        font-size: 18px;
+    }
+
+    #home-category h6, #home-product h6{
+        font-size: 14px;
+    }
+
+    /* Footer */
+    #footer h1{
+        font-size: 16px;
+    }
+
+    #footer p{
+        font-size: 13px;
+    }
+
+    #footer h6{
+        font-size: 13px;
+    }
+}

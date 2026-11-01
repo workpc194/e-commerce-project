@@ -40,8 +40,8 @@ const Navbar = () => {
     }, [number])
 
     return (
-        <div id='navbar' className='w-full fixed z-10 bg-white opacity-95'>
-            <div className='w-full h-14 flex justify-between items-center px-10'>
+        <div id='navbar' className='w-full fixed z-10 bg-white px-10 opacity-95'>
+            <div className='w-full h-14 flex justify-between items-center'>
                 <h1 className='text-2xl font-metropolisBold'><Link to={'/'}>NexMall</Link></h1>
                 <div id='nav-link' ref={navLinkRef} className='w-64'>
                     <ul className='w-full flex items-center justify-evenly'>
@@ -50,8 +50,8 @@ const Navbar = () => {
                         <li className='text-lg font-metropolisRegular hover:text-[#dc2626]'><Link to={'/categories'}>Categories</Link></li>
                     </ul>
                 </div>
-                <div className='w-46'>
-                    <ul className='w-full flex items-center justify-evenly'>
+                <div id='nav-icons' className='w-30'>
+                    <ul className='w-full flex items-center justify-between'>
                         {/* <li className='p-2 text-lg rounded-2xl hover:bg-[#F5F5F5]/80'><Search size={20} strokeWidth={2} /></li> */}
                         <li className='p-2 text-lg rounded-2xl hover:bg-[#F5F5F5]/80'><Link to={'/watchlist'}><Heart size={20} strokeWidth={2} /></Link></li>
                         <li className='p-2 text-lg rounded-2xl hover:bg-[#F5F5F5]/80'><Link to={'/cart'}><ShoppingCart size={20} strokeWidth={2} /></Link></li>
@@ -59,7 +59,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-            <hr className='mx-10' />
+            <hr />
         </div>
     )
 }

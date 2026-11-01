@@ -1,10 +1,9 @@
 
-import React from 'react'
 import { Link } from 'react-router'
 
 const Footer = () => {
     return (
-        <div className='w-full px-10 bg-black text-[#F5F5F5]'>
+        <div id='footer' className='w-full px-10 bg-black text-[#F5F5F5]'>
             <div className='w-full h-[70%] py-7 flex justify-between container'>
                 <div className=' h-full'>
                     <h1 className='text-3xl font-metropolisBold'><Link to={'/'}>NexMall</Link></h1>
@@ -24,7 +23,7 @@ const Footer = () => {
                 </div>
                 <div className=' h-full '>
                     <h1 className='text-3xl font-metropolisBold'>Contact</h1>
-                    <h6 className='text-lg font-metropolisRegular opacity-65'>Email: nomitool1419@gmail.com</h6>
+                    <h6 className='text-lg font-metropolisRegular opacity-65'><Link to={'mailto:nomitool1419@gmail.com'} target='_blank'>Email: nomitool1419@gmail.com</Link></h6>
                     <h6 className='text-lg font-metropolisRegular opacity-65'><Link to={'https://wa.me/923183815505'} target='_blank' >Phone: 03183815505</Link></h6>
                     <h6 className='text-lg font-metropolisRegular opacity-65'><Link to={'https://github.com/workpc194'} target='_blank'>Github</Link></h6>
                 </div>

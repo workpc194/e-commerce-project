@@ -108,18 +108,18 @@ const HomePage = () => {
           <img loading='lazy' src="https://cdn.pixabay.com/photo/2017/03/20/15/13/wrist-watch-2159351_1280.jpg" alt="Fashion Sale Image" className='w-full h-full object-cover select-none' />
         </SwiperSlide>
       </Swiper>
-      {/* Home Page Swiper Slide Text */}
-      <div className='pl-10 w-[45%] absolute top-[25%] z-2'>
-        <h2 className='text-[6vw] font-metropolisBold text-[#F5F5F5]'>Discover Your Perfect Style</h2>
-        <p className='text-[1.65vw] font-metropolisRegular text-[#F5F5F5]'>Shop the latest trends in electronics, fashion, beauty, and more. Get exclusive deals and fast delivery on all your favorite products.</p>
+      {/* Home Page Swiper Slide Text */}{/* w-[10vw] text-[1.5vw] */}
+      <div id='home' className='pl-10 w-[50%] absolute top-[25%] z-2'>
+        <h2 className='text-7xl font-metropolisBold text-[#F5F5F5]'>Discover Your Perfect Style</h2>
+        <p className='text-2xl font-metropolisRegular text-[#F5F5F5]'>Shop the latest trends in electronics, fashion, beauty, and more. Get exclusive deals and fast delivery on all your favorite products.</p>
         <Link to={'/products'} >
-          <button className='w-[10vw] text-[1.5vw] py-2 mt-4 border-2 cursor-pointer rounded-xl text-[#F5F5F5] hover:bg-black/30 hover:text-[#dc2626]'>Shop Now</button>
+          <button className='px-3 text-xl py-2 mt-4 border-2 cursor-pointer rounded-xl text-[#F5F5F5] hover:bg-black/30 hover:text-[#dc2626]'>Shop Now</button>
         </Link>
       </div>
       {/* Home Page Categories */}
-      <div className='w-full p-10'>
+      <div id='home-category' className='w-full p-10'>
         <div className='w-full flex justify-between'>
-          <h4 className='text-[2.5vw] font-metropolisSemiBold'>Our Categories</h4>
+          <h4 className='text-4xl font-metropolisSemiBold'>Our Categories</h4>
           <Link to={'/categories'}>
             <h6 className='text-xl flex'>View All<MoveUpRight /></h6>
           </Link>
@@ -131,9 +131,9 @@ const HomePage = () => {
         </div>
       </div>
       {/* Home Page Products */}
-      <div className='w-full p-10'>
+      <div id='home-product' className='w-full p-10'>
         <div className='w-full flex justify-between'>
-          <h4 className='text-[2.5vw] font-metropolisSemiBold'>Trending Products</h4>
+          <h4 className='text-4xl font-metropolisSemiBold'>Trending Products</h4>
           <Link to={'/products'} >
             <h6 className='text-xl flex'>View All<MoveUpRight /></h6>
           </Link>
