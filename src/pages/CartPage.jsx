@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux'
 import CartProductCard from '../components/CartProductCard'
+import { Link } from 'react-router'
+import { ArrowRight } from 'lucide-react'
 
 const CartPage = () => {
 
@@ -13,30 +15,52 @@ const CartPage = () => {
         )
     })
 
-    if(cartItems.length > 0){
-        subTotal = Math.trunc(subTotal)
+    if (cartItems.length > 0) {
+        // subTotal = Math.trunc(subTotal)
+        subTotal = Number(subTotal.toFixed(2))
         total = subTotal + 2
+        total = Number(total.toFixed(2))
     }
 
 
 
     return (
-        (cartItems.length < 1) ? <div className='w-full h-screen flex font-metropolisBold text-3xl items-center justify-center'>No Product in Cart</div>:<div className='w-full h-screen pt-15 px-8 flex items-center cart'>
-            <div className='w-[80%] pb-15 h-full overflow-scroll scrollbar-none flex gap-5 flex-wrap justify-center cart-product'>
-                {cartItems.map((elem, idx) => {
+        <div id='cart-page' className='w-full mt-19 pt-4 px-20'>
+            <div className='w-full flex justify-between items-end'>
+                <div className=''>
+                    <h1 className='font-metropolisBold text-[52px] text-[#141414] tracking-[-0.025em]'>Your Cart</h1>
+                    <p className='mt-2 font-metropolisRegular text-xs sm:text-[15px] text-[#5C5953]'>{cartItems.length} items in your watchlist</p>
+                </div>
+                <Link to={'/products'} className='font-metropolisSemiBold text-xs sm:text-[15px] text-[#141414] hover:text-[#B91C1C]'>&lt; continue shopping</Link>
+            </div>
+            {(cartItems.length < 1) ? <div className='w-full h-screen flex font-metropolisBold text-3xl items-center justify-center'>No Product in Cart</div> : <div className='w-full mt-8 flex gap-4 flex-col items-center justify-center cart-product'>
+                {cartItems.map((item, idx) => {
                     return (
-                        <CartProductCard elem={elem} key={idx} />
+                        <CartProductCard elem={item} key={idx} />
                     )
                 })}
-            </div>
-            <div className='w-[20%] h-[40%] border-2 rounded-2xl text-center flex flex-col justify-evenly cart-summary'>
-                <h3 className='text-3xl font-metropolisSemiBold'>Order Summery</h3>
-                <h5 className='text-lg font-metropolisRegular w-full flex justify-evenly'>SubTotal: <p>${subTotal}</p></h5>
-                <h5 className='text-lg font-metropolisRegular w-full flex justify-evenly'>Delivery Charges: <p>$2</p></h5>
-                <h3 className='text-2xl text-[#dc2626] font-metropolisBold w-full flex justify-evenly'>Total: <p>${total}</p></h3>
+            </div>}
+            <div className='max-w-95 p-8 bg-white mt-4 border border-[#E8E4DC] rounded-3xl flex flex-col items-center justify-evenly cart-summary'>
+                <h2 className='font-metropolisBold text-[22px] text-[#141414]'>Order Summery</h2>
+                <div className='w-full mt-5 flex justify-between'>
+                    <span className='font-metropolisRegular text-base text-[#5C5953] '>Subtotal</span>
+                    <span className='font-metropolisSemiBold text-base text-[#141414] '>${subTotal}</span>
+                </div>
+                <div className='w-full flex justify-between'>
+                    <span className='font-metropolisRegular text-base text-[#5C5953] '>Delivery charges</span>
+                    <span className='font-metropolisSemiBold text-base text-[#141414] '>$2.00</span>
+                </div>
+                <hr className='my-5 text-[#E8E4DC]' />
+                <div className='w-full flex justify-between'>
+                    <span className='font-metropolisRegular text-base text-[#5C5953] '>Total</span>
+                    <span className='font-metropolisBold text-3xl text-[#B91C1C] tracking-[0.02em]'>${total}</span>
+                </div>
+                <button onClick={()=>{
+                    alert('Work in Progress')
+                }} className='w-full h-14 flex items-center justify-center gap-2 font-metropolisSemiBold text-base text-white bg-[#DC2626] rounded-[14px]'>Proceed to checkout <ArrowRight strokeWidth={2} size={18} /></button>
             </div>
         </div>
-        
+
     )
 }
 

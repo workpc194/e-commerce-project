@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nexmall-e-commerce-project.vercel.app/sitemap.xml

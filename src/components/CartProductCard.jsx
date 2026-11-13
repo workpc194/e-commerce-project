@@ -1,4 +1,4 @@
-import { Heart, ShoppingCart, Star } from 'lucide-react'
+import { Heart, ShoppingCart, Star, Trash } from 'lucide-react'
 import { useDispatch } from 'react-redux'
 import { removeCartCollection } from '../redux/features/cartCollectionSlice'
 import { addWatchlistCollection } from '../redux/features/watchlistCollectionSlice'
@@ -16,25 +16,28 @@ const CartProductCard = (item) => {
     }
 
     return (
-        <div id='product-card' className='h-96 w-80 rounded-2xl border flex flex-col card'>
-            <div className='w-full h-[57%] bg-[#F5F5F5] rounded-t-2xl'>
-                <img loading='lazy' src={item.elem.images[0]} alt={item.elem.title} className='w-full h-full object-contain select-none' />
+        <div id='cart-product' className='w-full flex items-center gap-6 p-5 bg-white border border-[#E8E4DC] rounded-xl'>
+            <div className='w-32 h-32 rounded-[14px] bg-neutral-100'>
+                <img loading='lazy' src={item.elem.images[0]} alt={item.elem.title} className='w-full h-full rounded-[14px] object-contain' />
             </div>
-            <div className='w-full h-[43%] p-3 bg-white rounded-b-2xl flex flex-col justify-between'>
-                <h5 className='uppercase font-metropolisSemiBold text-[#dc2626]'>{item.elem.brand}</h5>
-                <h3 className='font-metropolisSemiBold '>{item.elem.title}</h3>
-                {item.elem.rating === 1 && item.elem.rating < 2 ? <div className='flex'><span className='text-[#FFFF00]'><Star /></span><span><Star /></span><span><Star /></span><span><Star /></span><span><Star /></span></div> : <></>}
-                {item.elem.rating >= 2 && item.elem.rating < 3 ? <div className='flex'><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span><Star /></span><span><Star /></span><span><Star /></span></div> : <></>}
-                {item.elem.rating >= 3 && item.elem.rating < 4 ? <div className='flex'><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span><Star /></span><span><Star /></span></div> : <></>}
-                {item.elem.rating >= 4 && item.elem.rating < 5 ? <div className='flex'><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span><Star /></span></div> : <></>}
-                {item.elem.rating === 5 ? <div className='flex'><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span className=' text-[#FFFF00]'><Star /></span></div> : <></>}
-                <h4 className='font-metropolisRegular text-2xl'>${item.elem.price}</h4>
-                <div className='w-full flex justify-between items-center'>
-                    <button onClick={() => addWatchlistButtonClick(item.elem)} className='p-2 w-9 text-lg font-metropolisBold cursor-pointer rounded-2xl bg-[#F5F5F5] hover:text-[#dc2626]/80'><Heart size={20} strokeWidth={2} /></button>
-                    <button onClick={() => removeCartButtonClick(item.elem)} className='p-2 w-37 text-lg font-metropolisMedium rounded-2xl justify-center bg-[#F5F5F5] cursor-pointer items-center flex text-[#dc2626]/80'>Add To Cart<ShoppingCart size={20} strokeWidth={2} /></button>
+            <div className='w-full h-32 flex flex-col'>
+                <div className='w-full flex justify-between'>
+                    <div className=''>
+                        <span className='uppercase font-metropolisSemiBold text-[11.5px] text-[#B91C1C] '>{item.elem.brand}</span>
+                        <h3 className='font-metropolisSemiBold text-lg text-[#141414] mt-1'>{item.elem.title}</h3>
+                        <span className='font-metropolisSemiBold tetx-[13px] text-[#1F6F43]'>{item.elem.availabilityStatus}</span>
+                    </div>
+                    <div className='font-metropolisBold text-xl text-[#141414]'>${item.elem.price}</div>
+                </div >
+                <div className='w-full flex justify-between'>
+                    {/* <input type="number" className='w-29 h-11 rounded-xl bg-[#FBFAF8] select-none' /> */}
+                    <div className='flex gap-4'>
+                        <button onClick={() => { addWatchlistButtonClick(item.elem) }} className='py-3 rounded-[14px] font-metropolisSemiBold text-[#141414] flex items-center gap2 cursor-pointer'><Heart strokeWidth={1.8} size={18} />Watchlist</button>
+                        <button onClick={() => { removeCartButtonClick(item.elem) }} className='py-3 rounded-[14px] font-metropolisSemiBold text-[#B91C1C] flex items-center gap-2 cursor-pointer'><Trash strokeWidth={1.8} size={18} />Remove</button>
+                    </div>
                 </div>
             </div>
-        </div >
+        </div>
     )
 }
 

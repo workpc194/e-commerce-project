@@ -1,12 +1,20 @@
+import { ArrowUpRight } from 'lucide-react'
 import React from 'react'
 
 const CategoryCard = (item) => {
+    
     return (
-        <div id='category-card' className='h-80 rounded-2xl m-2 pb-6 border cursor-pointer flex flex-col items-center justify-between card'>
-            <div className='w-full h-[90%] bg-[#F5F5F5] rounded-t-2xl'>
-                <img loading='lazy' src={item.elem.image} alt={`${item.elem.name} Category Image`} className='w-full h-[70%] rounded-2xl object-contain select-none' />
+        <div id='category-card' className='h-111 group hover:shadow-xl border border-[#E8E4DC] rounded-2xl cursor-pointer card'>
+            <div className='w-full h-94 rounded-t-2xl flex items-center justify-center bg-neutral-100'>
+                <img loading='lazy' src={item.elem.image} alt={`${item.elem.name} Category Image`} className='group-hover:scale-80 scale-75 rounded-2xl object-cover select-none' />
             </div>
-            <h5 className='text-lg font-metropolisMedium'>{item.elem.name}</h5>
+            <hr className='text-[#E8E4DC]' />
+            <div className='flex items-center justify-between p-4.5'>
+                <h5 className='text-lg font-metropolisSemiBold text-[#141414] group-hover:text-[#DC2626]'>{item.elem.name}</h5>
+                <a onClick={()=>{
+                    alert('Work in Progress')
+                }} className='w-8 h-8 flex items-center justify-center bg-[#141414] rounded-full'><ArrowUpRight color="#ffffff" strokeWidth={2} /></a>
+            </div>
         </div>
     )
 }

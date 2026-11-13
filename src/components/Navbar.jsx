@@ -1,13 +1,15 @@
-import { Search, ShoppingCart, Heart, Menu } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router'
+import { Heart, Menu, ShoppingCart, X } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+import { Link } from "react-router"
+
 
 const Navbar = () => {
 
     const navLinkRef = useRef()
     const navMenuRef = useRef()
+    const navCloseRef = useRef()
     const [number, setNumber] = useState(0)
-    const mediaQuery = window.matchMedia("(max-width: 700px)")
+    const mediaQuery = window.matchMedia("(max-width: 650px)")
 
     const changeNumber = () => {
         if (number === 0) {
@@ -15,52 +17,50 @@ const Navbar = () => {
         } else {
             setNumber(0)
         }
-        console.log(number);
-
     }
 
-    useEffect(() => {
-        const handleClick = () => {
-            changeNumber()
-        }
-
-        navMenuRef.current.addEventListener('click', handleClick)
-
-        return () => {
-            navMenuRef.current.removeEventListener('click', handleClick)
-        }
-    }, [number])
 
     useEffect(() => {
         if (number === 1 && mediaQuery.matches) {
             navLinkRef.current.style.display = 'block'
+            navCloseRef.current.style.display = 'flex'
+            navMenuRef.current.style.display = 'none'
         } else if (number === 0 && mediaQuery.matches) {
             navLinkRef.current.style.display = 'none'
+            navMenuRef.current.style.display = 'flex'
+            navCloseRef.current.style.display = 'none'
         }
     }, [number])
 
     return (
-        <div id='navbar' className='w-full fixed z-10 bg-white px-10 opacity-95'>
-            <div className='w-full h-14 flex justify-between items-center'>
-                <h1 className='text-2xl font-metropolisBold'><Link to={'/'}>NexMall</Link></h1>
-                <div id='nav-link' ref={navLinkRef} className='w-64'>
-                    <ul className='w-full flex items-center justify-evenly'>
-                        <li className='text-lg font-metropolisRegular hover:text-[#dc2626]'><Link to={'/'}>Home</Link></li>
-                        <li className='text-lg font-metropolisRegular hover:text-[#dc2626]'><Link to={'/products'}>Product</Link></li>
-                        <li className='text-lg font-metropolisRegular hover:text-[#dc2626]'><Link to={'/categories'}>Categories</Link></li>
-                    </ul>
-                </div>
-                <div id='nav-icons' className='w-30'>
-                    <ul className='w-full flex items-center justify-between'>
-                        {/* <li className='p-2 text-lg rounded-2xl hover:bg-[#F5F5F5]/80'><Search size={20} strokeWidth={2} /></li> */}
-                        <li className='p-2 text-lg rounded-2xl hover:bg-[#F5F5F5]/80'><Link to={'/watchlist'}><Heart size={20} strokeWidth={2} /></Link></li>
-                        <li className='p-2 text-lg rounded-2xl hover:bg-[#F5F5F5]/80'><Link to={'/cart'}><ShoppingCart size={20} strokeWidth={2} /></Link></li>
-                        <li id='nav-menu' ref={navMenuRef} className='p-2 text-lg hidden rounded-2xl hover:bg-[#F5F5F5]/80'><Menu size={20} strokeWidth={2} /></li>
-                    </ul>
-                </div>
+        <>
+        <nav className="w-full h-19 bg-[#FBFAF8] flex items-center px-20 justify-between border-b border-[#E8E4DC] fixed top-0 z-10">
+            <div className="flex gap-10">
+                <a href="#" className="text-[#141414] font-metropolisBold text-2xl tracking-[-0.02em]">NexMall</a>
+                <ul id="navFirstUl" className="flex gap-8 items-center">
+                    <li className="font-metropolisSemiBold text-base text-[#141414] hover:text-[#B91C1C]"><Link to={'/'}>Home</Link></li>
+                    <li className="font-metropolisSemiBold text-base text-[#141414] hover:text-[#B91C1C]"><Link to={'/categories'}>Category</Link></li>
+                    <li className="font-metropolisSemiBold text-base text-[#141414] hover:text-[#B91C1C]"><Link to={'/products'}>Product</Link></li>
+                </ul>
             </div>
+            <ul id="navSecondUl" className="flex items-center gap-6">
+                <li><Link to={'/watchlist'}><Heart color="#141414" size={22} strokeWidth={1.8} /></Link></li>
+                <li><Link to={'/cart'}><ShoppingCart color="#141414" size={22} strokeWidth={1.8} /></Link></li>
+                <li ref={navMenuRef} onClick={changeNumber} className="w-11 h-11 bg-[#141414] rounded-full hidden items-center justify-center"><button href="#"><Menu color="#FBFAF8" size={22} strokeWidth={1.8} /></button></li>
+                <li ref={navCloseRef} onClick={changeNumber} className="w-11 h-11 bg-[#141414] rounded-full hidden items-center justify-center"><button href="#"><X color="#FBFAF8" size={22} strokeWidth={1.8} /></button></li>
+            </ul>
+        </nav>
+        {/* Second */}
+        <ul id="navThirdUl" ref={navLinkRef} className="hidden w-full px-4 py-3 fixed top-16 bg-[#FBFAF8] z-50">
             <hr />
-        </div>
+            <li onClick={changeNumber} className="py-4.5 font-metropolisSemiBold text-xl text-[#141414] hover:text-[#B91C1C]"><Link to={'/'}>Home</Link></li>
+            <hr />
+            <li onClick={changeNumber} className="py-4.5 font-metropolisSemiBold text-xl text-[#141414] hover:text-[#B91C1C]"><Link to={'/categories'}>Category</Link></li>
+            <hr />
+            <li onClick={changeNumber} className="py-4.5 font-metropolisSemiBold text-xl text-[#141414] hover:text-[#B91C1C]"><Link to={'/products'}>Product</Link></li>
+            <hr />
+        </ul>
+        </>
     )
 }
 

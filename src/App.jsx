@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import HomePage from './pages/HomePage'
@@ -11,7 +10,7 @@ import CartPage from './pages/CartPage'
 
 const App = () => {
   return (
-    <div className='bg-white scroll-smooth'>
+    <div className='w-full min-h-screen bg-[#FBFAF8] scroll-smooth'>
       <Navbar />
       <Routes>
         <Route path='/' element={<HomePage />} />

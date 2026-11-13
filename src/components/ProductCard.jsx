@@ -1,5 +1,4 @@
-import { Heart, Star, ShoppingCart } from 'lucide-react'
-import { useRef } from 'react'
+import { Heart, ShoppingCart } from 'lucide-react'
 import { useDispatch } from 'react-redux'
 import { addWatchlistCollection } from '../redux/features/watchlistCollectionSlice'
 import { addCartCollection } from '../redux/features/cartCollectionSlice'
@@ -17,23 +16,20 @@ const ProductCard = (item) => {
   }
 
   return (
-    <div id='product-card' className='h-96 m-2 rounded-2xl border flex flex-col card'>
-      <div className='w-full h-[57%] bg-[#F5F5F5] rounded-t-2xl'>
-        <img loading='lazy' src={item.elem.images[0]} alt={item.elem.title} className='w-full h-full object-contain select-none' />
+    <div id='product-card' className='h-129 rounded-2xl border relative border-[#E8E4DC] cursor-pointer group hover:shadow-xl card'>
+      <div className='w-full h-75 bg-neutral-100 rounded-t-2xl'>
+        <img loading='lazy' src={item.elem.images[0]} alt={item.elem.title} className='w-full h-full object-contain scale-75 select-none group-hover:scale-80' />
       </div>
-      <div className='w-full h-[43%] p-3 bg-white rounded-b-2xl flex flex-col justify-between'>
-        <h5 className='uppercase font-metropolisSemiBold text-base text-[#dc2626]'>{item.elem.brand}</h5>
-        <h3 className='font-metropolisSemiBold text-lg '>{item.elem.title}</h3>
-        {item.elem.rating === 1 && item.elem.rating < 2 ? <div className='flex'><span className='text-[#FFFF00]'><Star /></span><span><Star /></span><span><Star /></span><span><Star /></span><span><Star /></span></div> : <></>}
-        {item.elem.rating >= 2 && item.elem.rating < 3 ? <div className='flex'><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span><Star /></span><span><Star /></span><span><Star /></span></div> : <></>}
-        {item.elem.rating >= 3 && item.elem.rating < 4 ? <div className='flex'><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span><Star /></span><span><Star /></span></div> : <></>}
-        {item.elem.rating >= 4 && item.elem.rating < 5 ? <div className='flex'><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span><Star /></span></div> : <></>}
-        {item.elem.rating === 5 ? <div className='flex'><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span className='text-[#FFFF00]'><Star /></span><span className=' text-[#FFFF00]'><Star /></span></div> : <></>}
-        <h4 className='font-metropolisRegular text-2xl'>${item.elem.price}</h4>
-        <div className='w-full flex justify-between items-center'>
-          <button onClick={() => addWatchlistButtonClick(item.elem)} className='p-2 w-9 text-lg cursor-pointer font-metropolisBold rounded-2xl bg-[#F5F5F5] hover:text-[#dc2626]/80'><Heart size={20} strokeWidth={2} /></button>
-          <button onClick={() => addCartButtonClick(item.elem)} className='p-2 text-lg font-metropolisMedium rounded-2xl justify-center bg-[#F5F5F5] cursor-pointer items-center flex hover:text-[#dc2626]/80'>Add To Cart<ShoppingCart size={20} strokeWidth={2} /></button>
-        </div>
+      <div className=' p-4.5 rounded-b-2xl flex flex-col gap-2'>
+        <h5 className='uppercase font-metropolisSemiBold text-[11.5px] text-[#dc2626] tracking-[0.1em]'>{item.elem.brand}</h5>
+        <h3 className='font-metropolisSemiBold text-base text-[#141414] min-h-[2.6em]'>{item.elem.title}</h3>
+        <div className='flex gap-1.5'>&#x2B50;<span className='font-metropolisSemiBold text-sm text-[#5C5953]'>{item.elem.rating}</span></div>
+        <h4 className='font-metropolisBold text-2xl text-[#141414] tracking-[0.01em]'>${item.elem.price}</h4>
+        <button onClick={() => addCartButtonClick(item.elem)} className='px-1.5 h-11.5 bg-[#141414] text-sm font-metropolisSemiBold text-white rounded-xl justify-center cursor-pointer items-center flex gap-2'><ShoppingCart size={18} strokeWidth={1.8} /> Add To Cart</button>
+      </div>
+      <div className='w-full px-3 flex justify-between items-center absolute top-2 left-0'>
+        <span className='px-2.5 py-1.5 font-metropolisSemiBold text-xs text-[#141414] bg-white rounded-[999px] text-center'>{item.elem.availabilityStatus}</span>
+        <button onClick={() => addWatchlistButtonClick(item.elem)} className='w-11 h-11 text-sm text-[#141414] rounded-full cursor-pointer bg-white hover:text-[#dc2626]/80 flex items-center justify-center'><Heart size={20} strokeWidth={2} /></button>
       </div>
     </div >
   )

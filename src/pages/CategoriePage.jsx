@@ -2,12 +2,13 @@ import { setCategories } from '../redux/features/homeSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import CategoryCard from '../components/CategoryCard'
 import { CategoriesApi } from '../api/mediaApi'
+import CategoryLoadingCard from '../components/CategoryLodingCard'
 
 const CategoriePage = () => {
 
     const dispatch = useDispatch()
     const { category } = useSelector((store) => store.homeSlice)
-
+    const number = [1,2,3,4,5,6,7,8]
     let categoryData = []
     let categoryImages = [
         'https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/1.webp',
@@ -51,10 +52,21 @@ const CategoriePage = () => {
     getdata()
 
     return (
-        <div className='w-full min-h-screen py-16 px-8 container'>
-            {(category.length < 1) ? <h1 className='text-3xl font-metropolisBold'>Loading Categories...</h1> : category.map((elem, idx) => {
-                return <CategoryCard elem={elem} key={idx} />
-            })}
+        <div id='category-page' className='w-full mt-19 pt-4 px-20'>
+            <div>
+                <p className='font-metropolisRegular text-sm text-[#5C5953]'>Home / <span className='font-metropolisSemiBold text-[#141414]'>Category</span></p>
+                <div className='flex justify-between'>
+                    <h1 className='font-metropolisBold text-[52px] tracking-[-0.025em] text-[#141414]'>All Categories</h1>
+                    <p className='font-metropolisRegular text-[15px] text-[#5C5953]'>{category.length} categories</p>
+                </div>
+            </div>
+            <div className='w-full grid grid-cols-4 grid-rows-1 gap-6 mt-8'>
+                {(category.length < 1) ? number.map((_, idx)=>{
+                    return <CategoryLoadingCard key={idx} />
+                }) : category.map((elem, idx) => {
+                    return <CategoryCard elem={elem} key={idx} />
+                })}
+            </div>
         </div>
     )
 }
